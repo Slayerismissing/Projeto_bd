@@ -12,6 +12,19 @@ def update_equipe(nome, id_equipe, regiao) :
     query = 'UPDATE equipe SET nome=%s AND regiao=%s WHERE id_equipe=%s'
     return cursor.execute(query, [nome, regiao, id_equipe])
 
-for 
+def tabela():
+    conn = criar_conexao()
+    cursor = conn.cursor()
+    query = 'SELECT * FROM equipes e'
+    conn.commit()
+    cursor.execute(query)
+    return cursor.fetchall()
+
+equipes = tabela()
+
+for i in equipes:
+    print(i)
+    
+
 
 
