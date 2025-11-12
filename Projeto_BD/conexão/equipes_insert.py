@@ -29,11 +29,12 @@ regiao = input('Qual a região de vocês: ')
 quant_integrantes = int(input('Quantos serão da equipe?: '))
 lider = input('O time já tem um líder? Sim ou Não?: ').lower()
 
-if lider.startswith('s'):
+if lider.endswith('sim'):
    nome_lider = input('dê o nome do líder: ')
    informacoes = inserir_usuario(nome_equipe, regiao, quant_integrantes, lider, nome_lider)
    print(informacoes)
 else:
+    print('Não foi dado um nome de líder')
     informacoes = inserir_usuario(nome_equipe, regiao, quant_integrantes)
     print(informacoes)
 
