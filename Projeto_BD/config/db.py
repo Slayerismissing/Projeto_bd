@@ -3,7 +3,7 @@ import psycopg2
 def criar_conexao():
     try:
         conn = psycopg2.connect(
-            dbname= 'campeonato',
+            dbname= 'aula',
             user='postgres',
             password='jdkljdkl@kblc2006',
             host='localhost',
