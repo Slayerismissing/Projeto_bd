@@ -1,4 +1,4 @@
-from config.db import criar_conexao
+from db import criar_conexao
 
 conn = criar_conexao()
 
