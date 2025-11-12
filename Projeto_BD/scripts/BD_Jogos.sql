@@ -44,15 +44,11 @@ create table resultado(
 		on update cascade
 );
 
-create table if not exists task(
-	id serial primary key,
-	title varchar(255),
-	user_id integer,
-	foreign key (user_id) references equipes(nome)
-);
-
-
 alter table equipes add column nome_lider varchar(255) not null;
+
+alter table equipes add column lider boolean not null;
+
+alter table equipes alter column nome_lider drop not null;
 
 select * from equipes;
 
