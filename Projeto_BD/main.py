@@ -1,4 +1,3 @@
-
 from db import criar_conexao
 import interfaces.equipes_interface as interface_equipes
 
