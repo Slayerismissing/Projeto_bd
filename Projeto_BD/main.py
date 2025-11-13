@@ -17,3 +17,5 @@ while True:
         print('Opção inválida. Tente novamente.')
 if conn:
     conn.close()
+
+#vai se foder
