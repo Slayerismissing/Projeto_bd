@@ -1,5 +1,6 @@
 from db import criar_conexao        
 
+#Deletar "FEITO"
 def deletar_equipe(id_equipe):
     conn = criar_conexao()
     cursor = conn.cursor()
@@ -16,12 +17,16 @@ def deletar_equipe(id_equipe):
     finally:
         conn.close()
 
+
+#update "FAZER"
 def update_equipe(nome, id_equipe, regiao) :
     conn = criar_conexao()
     cursor = conn.cursor()
     query = 'UPDATE equipe SET nome=%s AND regiao=%s WHERE id_equipe=%s'
     return cursor.execute(query, [nome, regiao, id_equipe])
 
+
+#inserir "FEITO"
 def inserir_equipe(nome, regiao, quantidade_integrantes, lider, nome_lider):
 
     conn = criar_conexao()
@@ -38,6 +43,7 @@ def inserir_equipe(nome, regiao, quantidade_integrantes, lider, nome_lider):
         conn.close()
 
 
+#Tabela mostrar "FEITO"
 def tabela():
     conn = criar_conexao()
     cursor = conn.cursor()

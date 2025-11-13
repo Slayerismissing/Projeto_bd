@@ -30,6 +30,8 @@ def interface_inserir_equipe():
         else:
             print('Opção inválida. Insira 1 para sim ou 2 para não')
 
+
+#Deletar a equipe
 def interface_deletar_equipe():
     equipes = service_equipe.tabela()
     print('ID;\tNome\tRegião;\tInte:\tLíder;\tNome Líder;')
@@ -46,3 +48,8 @@ def interface_deletar_equipe():
     print('\nTabela após exclusão:')
     for i in equipes:
         print(i)
+
+
+#Dar update na equipe
+def interface_update_equipe():
+    pass
