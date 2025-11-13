@@ -1,13 +1,12 @@
-from db import criar_conexao
-import os 
+from db import criar_conexao        
 
-def delete_equipe(id_equipe):
+def deletar_equipe(id_equipe):
     conn = criar_conexao()
     cursor = conn.cursor()
     query = 'DELETE FROM equipes WHERE id_equipe=%s'
     try:
        cursor.execute(query, [id_equipe])
-       conn.commit
+       conn.commit()
        print(f'Equipe com ID {id_equipe} removida com sucesso!')
        return True
     except Exception as e:
@@ -23,6 +22,22 @@ def update_equipe(nome, id_equipe, regiao) :
     query = 'UPDATE equipe SET nome=%s AND regiao=%s WHERE id_equipe=%s'
     return cursor.execute(query, [nome, regiao, id_equipe])
 
+def inserir_equipe(nome, regiao, quantidade_integrantes, lider, nome_lider):
+
+    conn = criar_conexao()
+    try:
+        cursor = conn.cursor()
+        query = 'INSERT INTO equipes(nome, regiao, quant_integrantes, lider, nome_lider) VALUES (%s, %s, %s, %s, %s)'
+        cursor.execute(query, (nome, regiao, quantidade_integrantes, lider, nome_lider))
+        conn.commit()
+        print('Dados de equipes inserido com sucesso!')
+    except Exception as e:
+        print(f'Erro ao inserir equipe: {e}')
+    finally:
+        cursor.close()
+        conn.close()
+
+
 def tabela():
     conn = criar_conexao()
     cursor = conn.cursor()
@@ -30,36 +45,5 @@ def tabela():
     conn.commit()
     cursor.execute(query)
     return cursor.fetchall()
-
-
-os.system('cls')
-
-equipes = tabela()
-print('ID;\tNome\tRegião;\tInte:\tLíder;\tNome Líder;')
-for i in equipes:
-    print(i)
-
-
-
-
-id_equipes = input('Digite o id do time que quer tirar: ')
-
-id_equipes_int = int(id_equipes)
-
-deletar = delete_equipe(id_equipes_int)
-
-
-
-
-
-
-
-
-
-equipes = tabela()
-print('\nTabela após exclusão:')
-for i in equipes:
-    print(i)
-
 
 
