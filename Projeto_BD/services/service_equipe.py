@@ -44,12 +44,17 @@ def inserir_equipe(nome, regiao, quantidade_integrantes, lider, nome_lider):
 
 
 #Tabela mostrar "FEITO"
-def tabela():
+def ler_equipes(id_equipe=None):
     conn = criar_conexao()
     cursor = conn.cursor()
-    query = 'SELECT * FROM equipes e'
-    conn.commit()
-    cursor.execute(query)
-    return cursor.fetchall()
-
+    if id_equipe:
+        query = 'SELECT * FROM equipes e WHERE e.id_equipe=%s'
+        cursor.execute(query, [id_equipe])
+        conn.commit()
+        return cursor.fetchall()
+    else:
+        query = 'SELECT * FROM equipes e'
+        cursor.execute(query)
+        conn.commit()
+        return cursor.fetchall()
 
