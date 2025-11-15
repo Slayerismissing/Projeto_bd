@@ -96,4 +96,35 @@ def interface_deletar_equipe():
 
 #Dar update na equipe
 def interface_update_equipe():
-    pass
+    while True:
+        print('---Atualizar Equipe---')
+        equipes = service_equipe.ler_equipes()
+
+        id_equipes_validos = []
+        print('Equipes disponíveis:')
+        for equipe in equipes:
+            #Resgata todos os ids para validação
+            id_equipes_validos.append(equipe[0])
+            print(f'id: {equipe[0]}\tNome: {equipe[1]}\tRegião: {equipe[2]}\tIntegrantes: {equipe[3]}\tLíder: {equipe[4]}\tNome Líder: {equipe[5]}')
+        id_equipe = input('Digite o id do time que quer atualizar (ou "sair" para voltar): ')
+
+        if id_equipe.lower() == 'sair':
+            break
+
+        #Garantir que o id seja um inteiro
+        try:
+            id_equipe_int = int(id_equipe)
+        except ValueError:
+            print("ID inválido. Por favor, insira um número inteiro.")
+            continue
+    
+        #Garantir que o id exista
+        if id_equipe_int not in id_equipes_validos:
+            print("ID não encontrado. Por favor, insira um ID válido.")
+            continue
+
+        novo_nome = input('Digite o novo nome da equipe: ')
+        nova_regiao = input('Digite a nova região da equipe: ')
+
+        service_equipe.update_equipe(novo_nome, id_equipe_int, nova_regiao)
+        print('Equipe atualizada com sucesso!')

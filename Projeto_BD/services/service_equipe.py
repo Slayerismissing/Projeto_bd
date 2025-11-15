@@ -22,8 +22,10 @@ def deletar_equipe(id_equipe):
 def update_equipe(nome, id_equipe, regiao) :
     conn = criar_conexao()
     cursor = conn.cursor()
-    query = 'UPDATE equipe SET nome=%s AND regiao=%s WHERE id_equipe=%s'
-    return cursor.execute(query, [nome, regiao, id_equipe])
+    query = 'UPDATE equipes SET nome=%s, regiao=%s WHERE id_equipe=%s'
+    cursor.execute(query, [nome, regiao, id_equipe])
+    conn.commit()
+    conn.close()
 
 
 #inserir "FEITO"
