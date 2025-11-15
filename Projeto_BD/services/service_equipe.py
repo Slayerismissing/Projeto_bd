@@ -1,6 +1,6 @@
 from db import criar_conexao        
 
-#Deletar "FEITO"
+#Deletar "FEITO" > Arrumar 
 def deletar_equipe(id_equipe):
     conn = criar_conexao()
     cursor = conn.cursor()
