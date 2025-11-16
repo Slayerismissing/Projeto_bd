@@ -1,13 +1,15 @@
 todo:
     1. Criar nova tabela 'campeonato' com informações importantes, como:
-        -Numero mínimo e maximo de jogadores por equipe
-        -Id usuario organizador
-        -estado do campeonato (ORGANIZACAO, ANDAMENTO, ENCERRADO)
-        -Numero de equipes esperado
-    2. Criar nova tabela 'usuarios' com informações de login:
-        -Email
-        -senha
-        -tipo de usuario (organizador, chefe de equipe, jogador)
+        ~~-Numero mínimo e maximo de jogadores por equipe~~
+        ~~-Id usuario organizador~~
+        ~~-estado do campeonato (ORGANIZACAO, ANDAMENTO, ENCERRADO)~~
+        ~~-Numero de equipes esperado~~
+        -Adicionar o CRUD dessa tabela
+    ~~2. Criar nova tabela 'usuarios' com informações de login:~~
+        ~~-Email~~
+        ~~-senha~~
+        ~~-tipo de usuario (organizador, chefe de equipe, jogador)~~
+        ~~-Adicionar o CRUD dessa tabela com cadastro e login apenas~~
     3. Limitar as operações C U D das tabelas baseado no estado do campeonato
         -Equipes só podem ser adicionadas antes do início do campeonato
         -O campeonato só pode ser iniciado com o número esperado de equipes
