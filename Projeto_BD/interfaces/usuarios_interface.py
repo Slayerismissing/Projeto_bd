@@ -1,5 +1,6 @@
 import os
 import services.service_usuario as service_usuario
+from time import sleep
 
 def tela_de_autenticacao():
     os.system('cls')
@@ -21,8 +22,10 @@ def tela_de_login():
     email = input('Digite seu email: ')
     password = input('Digite sua senha: ')
     autenticado = service_usuario.autenticar_usuario(email, password)
+    #Primeiro elemento: usuario
     if not autenticado[0]:
         print('Falha na autenticação. Tente novamente.')
+        sleep(1.5)
         tela_de_login()
     else:
         os.system('cls')
