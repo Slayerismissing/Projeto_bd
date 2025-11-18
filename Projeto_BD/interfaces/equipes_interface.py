@@ -6,11 +6,12 @@ def interface_equipes():
     os.system('cls')
     while True:
         print('---Interface de Equipes---')
+
         print('1 - Inserir equipe')
         print('2 - Deletar equipe')
         print('3 - Atualizar equipe')
-        print('4 - Voltar ao menu principal')
-
+        print('4 - Listar equipes')
+        print('5 - Voltar ao menu principal')
         opcao = input('Escolha uma opção: ')
 
         if opcao == '1':
@@ -20,6 +21,8 @@ def interface_equipes():
         elif opcao == '3':
             interface_update_equipe()
         elif opcao == '4':
+            listar_torneios_da_equipe()
+        elif opcao == '5':
             break
         else:
             print('Opção inválida. Tente novamente.')
@@ -128,3 +131,33 @@ def interface_update_equipe():
 
         service_equipe.update_equipe(novo_nome, id_equipe_int, nova_regiao)
         print('Equipe atualizada com sucesso!')
+
+def listar_equipes():
+    equipes = service_equipe.ler_equipes()
+    if not equipes:
+        print('Nenhuma equipe cadastrada.')
+        return
+    print('Equipes disponíveis:')
+    for e in equipes:
+        print(f'id: {e[0]}\tNome: {e[1]}\tRegião: {e[2]}\tIntegrantes: {e[3]}')
+
+def listar_torneios_da_equipe():
+    id_equipe = ''
+    while True:
+        listar_equipes()
+        id_equipe = input('Digite o id da equipe para ver seus torneios (ou "sair" para voltar): ')
+        if id_equipe.lower() == 'sair':
+            return
+        try:
+            id_equipe_int = int(id_equipe)
+            break
+        except ValueError:
+            print("ID inválido. Por favor, insira um número inteiro.")
+            continue
+    torneios = service_equipe.listar_torneios_da_equipe(id_equipe_int)
+    if not torneios:
+        print('Nenhum torneio encontrado para essa equipe.')
+        return
+    print('Torneios da equipe:')
+    for t in torneios:
+        print(f'id: {t[0]}\tNome: {t[1]}\tInicio: {t[2]}\tFim: {t[3]}')

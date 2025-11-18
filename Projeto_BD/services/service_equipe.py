@@ -9,13 +9,15 @@ def deletar_equipe(id_equipe):
        cursor.execute(query, [id_equipe])
        conn.commit()
        print(f'Equipe com ID {id_equipe} removida com sucesso!')
-       return True
+       resultado = True
     except Exception as e:
         conn.rollback()
         print(f'Erro ao deletar: {e}')
-        return False
+        resultado = False
     finally:
+        cursor.close()
         conn.close()
+    return resultado
 
 
 #update "FAZER"
@@ -53,10 +55,27 @@ def ler_equipes(id_equipe=None):
         query = 'SELECT * FROM equipes e WHERE e.id_equipe=%s'
         cursor.execute(query, [id_equipe])
         conn.commit()
-        return cursor.fetchall()
+        resultado = cursor.fetchall()
     else:
         query = 'SELECT * FROM equipes e'
         cursor.execute(query)
         conn.commit()
-        return cursor.fetchall()
+        resultado = cursor.fetchall()
+    cursor.close()
+    conn.close()
+    return resultado
 
+def listar_torneios_da_equipe(id_equipe):
+    conn = criar_conexao()
+    cursor = conn.cursor()
+    query = '''
+        SELECT t.id_torneio, t.nome, t.data_inicio, t.data_fim
+        FROM torneios t
+        JOIN inscricoes i ON t.id_torneio = i.id_torneio
+        WHERE i.id_equipe = %s
+    '''
+    cursor.execute(query, [id_equipe])
+    resultados = cursor.fetchall()
+    cursor.close()
+    conn.close()
+    return resultados
