@@ -6,12 +6,11 @@ import interfaces.torneios_interface as interface_torneios
 import os
 
 conn = criar_conexao()
-
+logado = False
 #todo: separar as interfaces do main
 while True:
     
     os.system('cls')
-    logado = False
     while not logado:
         logado = interface_usuario.tela_de_autenticacao()
 

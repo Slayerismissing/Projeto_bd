@@ -74,7 +74,7 @@ def interface_deletar_equipe():
         for equipe in equipes:
             #Resgata todos os ids para validação
             id_equipes_validos.append(equipe[0])
-            print(f'id: {equipe[0]}\tNome: {equipe[1]}\tRegião: {equipe[2]}\tIntegrantes: {equipe[3]}\tLíder: {equipe[4]}\tNome Líder: {equipe[5]}')
+            print(f'id: {equipe[0]} \t | \t Nome: {equipe[1]}\t | \t Região: {equipe[2]}\t | \t Integrantes: {equipe[3]}\t | \t Líder: {equipe[4]}\t | \t Nome Líder: {equipe[5]}')
         id_equipes = input('Digite o id do time que quer tirar: ')
 
         #Garantir que o id seja um inteiro
@@ -108,7 +108,7 @@ def interface_update_equipe():
         for equipe in equipes:
             #Resgata todos os ids para validação
             id_equipes_validos.append(equipe[0])
-            print(f'id: {equipe[0]}\tNome: {equipe[1]}\tRegião: {equipe[2]}\tIntegrantes: {equipe[3]}\tLíder: {equipe[4]}\tNome Líder: {equipe[5]}')
+            print(f'id: {equipe[0]}\t | \t Nome: {equipe[1]}\t | \t Região: {equipe[2]}\t | \t Integrantes: {equipe[3]}\t | \t Líder: {equipe[4]}\t | \t Nome Líder: {equipe[5]}')
         id_equipe = input('Digite o id do time que quer atualizar (ou "sair" para voltar): ')
 
         if id_equipe.lower() == 'sair':
@@ -139,7 +139,7 @@ def listar_equipes():
         return
     print('Equipes disponíveis:')
     for e in equipes:
-        print(f'id: {e[0]}\tNome: {e[1]}\tRegião: {e[2]}\tIntegrantes: {e[3]}')
+        print(f'id: {e[0]}\t | \t Nome: {e[1]}\t | \t Região: {e[2]}\t | \t Integrantes: {e[3]}')
 
 def listar_torneios_da_equipe():
     id_equipe = ''
@@ -160,4 +160,4 @@ def listar_torneios_da_equipe():
         return
     print('Torneios da equipe:')
     for t in torneios:
-        print(f'id: {t[0]}\tNome: {t[1]}\tInicio: {t[2]}\tFim: {t[3]}')
+        print(f'id: {t[0]}  \t | \t Nome: {t[1]}\t | \t Inicio: {t[2]}\t | \t Fim: {t[3]}')

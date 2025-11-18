@@ -71,8 +71,9 @@ def listar_torneios_da_equipe(id_equipe):
     query = '''
         SELECT t.id_torneio, t.nome, t.data_inicio, t.data_fim
         FROM torneios t
-        JOIN inscricoes i ON t.id_torneio = i.id_torneio
-        WHERE i.id_equipe = %s
+        JOIN torneio_equipe te ON t.id_torneio = te.torneio_id
+        JOIN equipes i ON te.equipe_id = i.id_equipe
+        WHERE i.id_equipe = %s  
     '''
     cursor.execute(query, [id_equipe])
     resultados = cursor.fetchall()

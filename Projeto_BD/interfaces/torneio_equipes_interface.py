@@ -35,7 +35,7 @@ def _selecionar_torneio():
     print('Torneios disponíveis:')
     for t in torneios:
         ids.append(t[0])
-        print(f'id: {t[0]}\tNome: {t[1]}\tInicio: {t[2]}\tFim: {t[3]}')
+        print(f'id: {t[0]}\t | \t Nome: {t[1]}\t | \t Inicio: {t[2]}\t | \t Fim: {t[3]}')
 
     escolha = input('Digite o id do torneio (ou "sair" para voltar): ')
     if escolha.lower() in ('sair', 'exit'):
@@ -60,7 +60,7 @@ def _selecionar_equipe():
     print('Equipes disponíveis:')
     for e in equipes:
         ids.append(e[0])
-        print(f'id: {e[0]}\tNome: {e[1]}\tRegião: {e[2]}\tIntegrantes: {e[3]}')
+        print(f'id: {e[0]}\t | \t Nome: {e[1]}\t | \t Região: {e[2]}\t | \t Integrantes: {e[3]}')
 
     escolha = input('Digite o id da equipe (ou "sair" para voltar): ')
     if escolha.lower() in ('sair', 'exit'):
@@ -86,7 +86,7 @@ def listar_equipes_torneio():
         return
     print('Equipes inscritas:')
     for e in equipes:
-        print(f'id: {e[0]}\tNome: {e[1]}\tRegião: {e[2]}')
+        print(f'id: {e[0]}\t | \t Nome: {e[1]}\t | \t Região: {e[2]}')
 
 
 def inscrever_equipe_interface():
