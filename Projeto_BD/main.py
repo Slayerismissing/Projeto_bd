@@ -1,6 +1,8 @@
+
 from db import criar_conexao
 import interfaces.equipes_interface as interface_equipes
 import interfaces.usuarios_interface as interface_usuario
+import interfaces.torneios_interface as interface_torneios
 import os
 
 conn = criar_conexao()
@@ -17,7 +19,7 @@ while True:
 
     opcao = input('Digite o que deseja modificar: \n 1- Torneios \n 2- Equipes \n 3- Jogadores \n 4- Sair \n') 
     if opcao == '1':
-        # todo: interface_torneios.interface_torneios()
+        interface_torneios.interface_torneios()
         continue
     elif opcao == '2':
         interface_equipes.interface_equipes()

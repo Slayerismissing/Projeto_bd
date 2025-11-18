@@ -12,6 +12,19 @@ BEGIN
 END
 $$;
 
+DO $$
+BEGIN
+    -- Verifica se o tipo 'tipo_usuario_enum' já não existe
+    IF NOT EXISTS (SELECT 1 FROM pg_type WHERE typname = 'estado_torneio') THEN
+        -- Se não existir, ele cria
+        CREATE TYPE estado_torneio AS ENUM (
+            'aberto',
+            'em andamento',
+            'finalizado'
+        );
+    END IF;
+END
+$$;
 -- Tabela de Usuários
 CREATE TABLE IF NOT EXISTS usuarios (
 	id_usuario SERIAL PRIMARY KEY,
@@ -31,7 +44,13 @@ CREATE TABLE IF NOT EXISTS torneios (
 	minimo_jogadores_equipe INTEGER CHECK (minimo_jogadores_equipe > 5),
 	maximo_jogadores_equipe INTEGER CHECK (maximo_jogadores_equipe <= 10),
 	-- Os torneios tem apenas um grupo de equipes, devendo ser uma potência de 2 entre 8 e 32
-	numero_equipes INTEGER CHECK (numero_equipes = 8 OR numero_equipes = 16 OR numero_equipes = 32)
+	numero_equipes INTEGER CHECK (numero_equipes = 8 OR numero_equipes = 16 OR numero_equipes = 32),
+    estado estado_torneio NOT NULL DEFAULT 'aberto',
+    organizador_id INTEGER NOT NULL,
+    CONSTRAINT fk_organizador_torneio FOREIGN KEY (organizador_id)
+        REFERENCES usuarios (id_usuario)
+        ON DELETE RESTRICT
+        ON UPDATE CASCADE
 );
 
 -- Tabela de Equipes (já com os campos de liderança)
@@ -83,4 +102,20 @@ CREATE TABLE IF NOT EXISTS resultado (
         REFERENCES jogos (id_jogos)
         ON DELETE RESTRICT
         ON UPDATE CASCADE
+);
+
+-- Tabela de relacionamento entre torneios e equipes
+CREATE TABLE IF NOT EXISTS torneio_equipe (
+    id_torneio_equipe SERIAL PRIMARY KEY,
+    torneio_id INTEGER NOT NULL,
+    equipe_id INTEGER NOT NULL,
+    CONSTRAINT fk_torneio FOREIGN KEY (torneio_id)
+        REFERENCES torneios (id_torneio)
+        ON DELETE CASCADE
+        ON UPDATE CASCADE,
+    CONSTRAINT fk_equipe FOREIGN KEY (equipe_id)
+        REFERENCES equipes (id_equipe)
+        ON DELETE CASCADE
+        ON UPDATE CASCADE,
+    CONSTRAINT uq_torneio_equipe UNIQUE (torneio_id, equipe_id)
 );

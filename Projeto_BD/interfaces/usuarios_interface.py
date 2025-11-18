@@ -1,5 +1,4 @@
 import os
-import bcrypt
 import services.service_usuario as service_usuario
 
 def tela_de_autenticacao():
