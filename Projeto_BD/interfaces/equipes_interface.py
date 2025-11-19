@@ -1,10 +1,15 @@
-import services.service_equipe as service_equipe
+#impor aleios
 import os
+
+#import services
+import services.service_equipe as service_equipe
+
 
 #Interface principal de equipes
 def interface_equipes():
-    os.system('cls')
+    
     while True:
+        os.system('cls')
         print('---Interface de Equipes---')
 
         print('1 - Inserir equipe')
