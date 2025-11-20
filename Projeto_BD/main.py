@@ -7,13 +7,13 @@ import interfaces.jogador_interface as interface_jogador
 import os
 
 conn = criar_conexao()
-# logado = False
+logado = False
 #todo: separar as interfaces do main
 while True:
     
     os.system('cls')
-    # while not logado:
-    #     logado = interface_usuario.tela_de_autenticacao()
+    while not logado:
+        logado = interface_usuario.tela_de_autenticacao()
 
     print('\n ---Menu Principal---')
 
