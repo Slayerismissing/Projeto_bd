@@ -179,7 +179,7 @@ def deletar_torneio(id_torneio):
             conn.close()
 
 
-def start_torneio(id_torneio, minimo_maximo):
+def start_torneio(id_torneio, quant_equipes):
     if not _existe_torneio(id_torneio):
         print('Torneio não encontrado.')
         return False
@@ -195,8 +195,8 @@ def start_torneio(id_torneio, minimo_maximo):
         conn = criar_conexao()
         cursor = conn.cursor()
         equipes_inscritas = _count_equipes_inscritas(id_torneio)
-        if equipes_inscritas < minimo_maximo[0] or equipes_inscritas > minimo_maximo[1]:
-            print(f'Número de equipes inscritas ({equipes_inscritas}) não está dentro do intervalo permitido ({minimo_maximo[0]} - {minimo_maximo[1]}).')
+        if equipes_inscritas != quant_equipes:
+            print(f'Número de equipes inscritas ({equipes_inscritas}) não é o esperado ({quant_equipes}).')
             return False
         cursor.execute("UPDATE torneios SET estado = 'em andamento' WHERE id_torneio=%s", (id_torneio,))
         conn.commit()

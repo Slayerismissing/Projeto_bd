@@ -78,6 +78,7 @@ CREATE TABLE IF NOT EXISTS jogadores (
 -- Tabela de Jogos
 CREATE TABLE IF NOT EXISTS jogos (
     id_jogos SERIAL PRIMARY KEY,
+    id_torneio INTEGER NOT NULL,
     id_equipe1 INTEGER NOT NULL,
     id_equipe2 INTEGER NOT NULL,
     data_hora TIMESTAMP WITH TIME ZONE NOT NULL,
@@ -87,6 +88,10 @@ CREATE TABLE IF NOT EXISTS jogos (
         ON UPDATE CASCADE,
     CONSTRAINT fk_jogos_equipes2 FOREIGN KEY (id_equipe2)
         REFERENCES equipes (id_equipe)
+        ON DELETE RESTRICT
+        ON UPDATE CASCADE,
+    CONSTRAINT fk_jogos_torneio FOREIGN KEY (id_torneio)
+        REFERENCES torneios (id_torneio)
         ON DELETE RESTRICT
         ON UPDATE CASCADE
 );
