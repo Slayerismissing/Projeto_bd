@@ -11,6 +11,16 @@ Observações:
 import time
 from datetime import datetime, timedelta
 import argparse
+import os
+import sys
+
+# Garantir que o diretório do projeto (`Projeto_BD`) esteja no sys.path
+# Isso permite executar o teste a partir da pasta mãe sem erro de importação de `db`.
+HERE = os.path.dirname(os.path.abspath(__file__))
+PROJECT_ROOT = os.path.abspath(os.path.join(HERE, '..'))
+if PROJECT_ROOT not in sys.path:
+    sys.path.insert(0, PROJECT_ROOT)
+
 import db as db_mod
 import services.service_usuario as su
 import services.service_equipe as se
@@ -214,10 +224,6 @@ def main():
     for t in torneios:
         if t[0] == torneio_id:
             estado = t[4] if len(t) > 4 else None
-            # Note: in listar_torneios, fields: id_torneio, nome, data_inicio, data_fim, minimo_jogadores_equipe, ...
-            # The estado is at position 8 in original select; to be safe, fetch row by id directly
-    # fetch precise estado
-    # fetch precise estado
     conn_check = db_mod.criar_conexao()
     cur = conn_check.cursor()
     cur.execute('SELECT estado FROM torneios WHERE id_torneio=%s', (torneio_id,))
