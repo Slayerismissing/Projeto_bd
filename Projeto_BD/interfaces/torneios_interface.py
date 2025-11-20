@@ -4,6 +4,7 @@ from datetime import datetime
 import services.service_torneio as service_torneio
 import services.service_usuario as service_usuario
 import interfaces.torneio_equipes_interface as interface_torneio_equipes
+import interfaces.jogos_interface as jogos_interface
 
 
 def interface_torneios():
@@ -16,7 +17,8 @@ def interface_torneios():
         print('4 - Iniciar torneio')
         print('5 - Listar torneios')
         print('6 - Gerenciar equipes do torneio')
-        print('7 - Voltar ao menu principal')
+        print('7 - Gerenciar jogos do torneio')
+        print('8 - Voltar ao menu principal')
 
         opcao = input('Escolha uma opção: ')
 
@@ -33,6 +35,8 @@ def interface_torneios():
         elif opcao == '6':
             interface_torneio_equipes.interface_torneio_equipes()
         elif opcao == '7':
+            jogos_interface.interface_jogos()
+        elif opcao == '8':
             break
         else:
             print('Opção inválida. Tente novamente.')
@@ -229,7 +233,7 @@ def interface_start_torneio():
     minimo_maximo = None
     for t in torneios:
         if t[0] == id_int:
-            minimo_maximo = t[4:6]
+            quant_equipes = t[6]
             break
 
-    service_torneio.start_torneio(id_int, minimo_maximo)
+    service_torneio.start_torneio(id_int, quant_equipes)
