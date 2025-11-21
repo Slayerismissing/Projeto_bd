@@ -6,6 +6,7 @@ Observações:
 - O script usa as funções do pacote `services` já existente.
 - Não realiza limpeza automática profunda no banco. Ao final há instruções de limpeza manual.
 - Requer que o banco (`db.criar_conexao`) esteja acessível e que as tabelas do script `scripts/BD_Jogos.sql` existam.
+- Num tá funcionando não boy. . .
 """
 
 import time
