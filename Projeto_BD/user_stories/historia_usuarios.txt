@@ -30,9 +30,9 @@ Aqui é onde a mágica acontece e o código geralmente quebra.
 👑 Como Organizador:
 O Botão Vermelho: Eu preciso que o sistema só libere a criação de partidas (tabela Jogos) APÓS o status do campeonato mudar para "Iniciado" (e isso só deve ocorrer se o nº mínimo de equipes for atingido).
 
-Matchmaking Manual: Eu quero criar uma partida definindo: Time A vs Time B, Data/Hora (opcional) e Identificador da Partida (ex: "Final", "Grupo A - Jogo 1").
+Matchmaking Manual: Eu quero criar uma partida definindo: Time A vs Time B, Data/Hora (opcional) e Identificador da Partida (ex: "Final", "Grupo A - Jogo 1"). #IMPORTANTE
 
-Evitar Clones: Eu preciso que o sistema impeça que uma equipe jogue contra si mesma (o sistema trava se id_time_a == id_time_b).
+Evitar Clones: Eu preciso que o sistema impeça que uma equipe jogue contra si mesma (o sistema trava se id_time_a == id_time_b). 
 
 🛡️ Como Equipe:
 Agenda: Eu quero listar todos os jogos onde minha equipe (ID da minha equipe) está escalada, para saber contra quem vou perder.
