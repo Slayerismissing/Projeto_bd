@@ -34,7 +34,6 @@ CREATE TABLE IF NOT EXISTS usuarios (
 	tipo_usuario tipo_usuario_enum NOT NULL,
 	data_criacao TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
 );
-
 -- Tabela de Torneios
 CREATE TABLE IF NOT EXISTS torneios (
 	id_torneio SERIAL PRIMARY KEY,
@@ -52,7 +51,6 @@ CREATE TABLE IF NOT EXISTS torneios (
         ON DELETE RESTRICT
         ON UPDATE CASCADE
 );
-
 -- Tabela de Equipes (já com os campos de liderança)
 CREATE TABLE IF NOT EXISTS equipes (
     id_equipe SERIAL PRIMARY KEY,
@@ -62,7 +60,6 @@ CREATE TABLE IF NOT EXISTS equipes (
     nome_lider VARCHAR(255), 
     lider BOOLEAN NOT NULL  
 );
-
 -- Tabela de Jogadores
 CREATE TABLE IF NOT EXISTS jogadores (
     id_jogador SERIAL PRIMARY KEY,
@@ -74,7 +71,6 @@ CREATE TABLE IF NOT EXISTS jogadores (
         ON DELETE RESTRICT
         ON UPDATE CASCADE
 );
-
 -- Tabela de Jogos
 CREATE TABLE IF NOT EXISTS jogos (
     id_jogos SERIAL PRIMARY KEY,
@@ -95,7 +91,6 @@ CREATE TABLE IF NOT EXISTS jogos (
         ON DELETE RESTRICT
         ON UPDATE CASCADE
 );
-
 -- Tabela de Resultados
 CREATE TABLE IF NOT EXISTS resultado (
     id_resultado SERIAL PRIMARY KEY,
@@ -108,7 +103,6 @@ CREATE TABLE IF NOT EXISTS resultado (
         ON DELETE RESTRICT
         ON UPDATE CASCADE
 );
-
 -- Tabela de relacionamento entre torneios e equipes
 CREATE TABLE IF NOT EXISTS torneio_equipe (
     id_torneio_equipe SERIAL PRIMARY KEY,
