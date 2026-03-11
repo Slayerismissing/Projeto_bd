@@ -227,13 +227,13 @@ def interface_start_torneio():
 
     try:
         id_int = int(input('Digite o id do torneio que quer iniciar: '))
-    except ValueError:
-        print('ID inválido.')
+    except (ValueError, UnboundLocalError) as e:
+        print(f'Erro foi: {e}')
         return
     minimo_maximo = None
     for t in torneios:
         if t[0] == id_int:
             quant_equipes = t[6]
-            break
+            return
 
     service_torneio.start_torneio(id_int, quant_equipes)
